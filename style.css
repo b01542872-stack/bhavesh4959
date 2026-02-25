@@ -1,0 +1,193 @@
+/* Base Themes & Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+html,
+body,
+[class*="css"] {
+    font-family: 'Arial Black', sans-serif;
+}
+
+/* Ocean Wave Background Animation on main App Container */
+@keyframes oceanWave {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Base stApp layout - Linear Gradient Gold/Yellow */
+.stApp {
+    background: linear-gradient(-45deg, #fffde7, #fff59d, #ffee58, #ffeb3b);
+    background-size: 400% 400%;
+    animation: oceanWave 15s ease infinite;
+}
+
+/* TOPS Technologies Brand Colors (Yellow Theme) */
+:root {
+    --primary-navy: #3e2723;
+    /* Dark brown/gray for contrast against yellow */
+    --secondary-sky: #f57f17;
+    /* Deep orange/yellow for accents */
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(62, 39, 35, 0.15);
+}
+
+/* Glassmorphism Classes for Cards and Metrics */
+div[data-testid="stMetric"],
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+div[data-testid="stMetric"]:hover,
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(62, 39, 35, 0.25);
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--primary-navy) !important;
+    font-weight: 700 !important;
+}
+
+div[data-testid="stMetricValue"] {
+    color: var(--secondary-sky) !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+}
+
+div[data-testid="stMetricLabel"] {
+    color: var(--primary-navy) !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+}
+
+/* Styled Terminal for Executions Logs (Bottom Docked) */
+.terminal-container {
+    position: fixed;
+    bottom: 20px;
+    left: 5%;
+    width: 90%;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    border: 2px solid var(--primary-navy);
+    border-radius: 12px;
+    box-shadow: 0 -10px 40px rgba(62, 39, 35, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+.terminal-header {
+    background-color: var(--primary-navy);
+    color: white;
+    padding: 8px 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.terminal-body {
+    padding: 15px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: var(--primary-navy);
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-line {
+    margin-bottom: 6px;
+    line-height: 1.4;
+    word-break: break-all;
+}
+
+.terminal-time {
+    color: #0288d1;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Primary Button Styling */
+div.stButton>button:first-child {
+    background: linear-gradient(135deg, var(--primary-navy), var(--secondary-sky));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+    transition: all 0.3s ease;
+}
+
+div.stButton>button:first-child:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.4);
+    background: linear-gradient(135deg, #4e342e, #ff8f00);
+}
+
+/* File Uploader styling */
+div[data-testid="stFileUploader"] {
+    background: var(--glass-bg);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px dashed var(--primary-navy);
+}
+
+/* Sidebar Styling */
+section[data-testid="stSidebar"] {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--glass-border);
+}
+
+/* Custom Scrollbar for Terminal */
+.terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: var(--secondary-sky);
+    border-radius: 4px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-navy);
+}
+
+/* Spacing to clear the bottom terminal */
+.main .block-container {
+    padding-bottom: 300px !important;
+}
